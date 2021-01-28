@@ -1,0 +1,12 @@
+<h1>Tweets from <%= @user.username %></h1>
+
+<ul>
+  <% @user.tweets.order(id: :desc).each do |tweet| %>
+    <li>
+      <%= tweet.content %><br>
+      <a href="/tweets/<%= tweet.id %>">
+        <%= tweet.created_at.strftime('%m/%d/%Y - %I:%M%p') %>
+      </a>
+    </li>
+  <% end %>
+</ul>
