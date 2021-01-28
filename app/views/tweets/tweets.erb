@@ -1,0 +1,16 @@
+<h2>Welcome, <%= @user.username%></h2>
+<h1>All Tweets</h1>
+
+<ul>
+  <% Tweet.all.order(id: :desc).each do |tweet| %>
+    <li>
+      <a href="/users/<%= tweet.user.slug %>">
+        <%= tweet.user.username %>
+      </a>: 
+      <%= tweet.content %><br>
+      <a href="/tweets/<%= tweet.id %>">
+        <%= tweet.created_at.strftime('%m/%d/%Y - %I:%M%p') %>
+      </a>
+    </li>
+  <% end %>
+</ul>
